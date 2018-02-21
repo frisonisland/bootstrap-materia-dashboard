@@ -1,0 +1,102 @@
+:root {
+    --sidebar-width:200px;
+    --sidebar-background-color: #fff;
+    --sidebar-text-color: #333;
+    --sidebar-header-background: #fff;
+}
+
+#sidebar {
+    /* don't forget to add all the previously mentioned styles here too */
+    background: var(--sidebar-background-color);
+    color: var(--sidebar-text-color);
+    transition: all 0.3s;
+
+    min-width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* top layer */
+    z-index: 9999;
+    -webkit-box-shadow: 1px 0px 1px rgba(0,0,0,0.3);
+    box-shadow: 1px 0px 1px rgba(0,0,0,0.3);
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: var(--sidebar-header-background);
+    color: var(--sidebar-text-color);
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul p {
+    color: var(--sidebar-text-color);
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+
+    padding-left: 20px;
+}
+
+#sidebar ul li a:hover {
+    background: var(--sidebar-header-background);
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: var(--sidebar-text-color);;
+    background: var(--sidebar-header-background);;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: var(--sidebar-header-background);;
+}
+
+
+.overlay {
+    /* full screen */
+    width: 100vw;
+    height: 100vh;
+    /* transparent black */
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    /* middle layer, i.e. appears below the sidebar */
+    z-index: 9998;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    /* top right corner of the sidebar */
+    top: 10px;
+    right: 10px;
+}
+
+
+@media (max-width: 768px) {
+    /* Reversing the behavior of the sidebar:
+       it'll be rotated vertically and off canvas by default,
+       collapsing in on toggle button click with removal of
+       the vertical rotation.   */
+    #sidebar {
+        margin-left: calc(0px - var(--sidebar-width));
+    }
+    #sidebar.active {
+        margin-left: 0;
+        transform: none;
+    }
+
+}

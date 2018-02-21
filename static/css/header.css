@@ -1,0 +1,6 @@
+:root {
+    header-background-color:#fff;
+}
+#header {
+    background: var(--header-background-color);
+}
